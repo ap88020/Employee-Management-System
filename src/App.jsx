@@ -8,25 +8,31 @@ import { AuthContext } from './context/AuthProvider'
 
 function App() {
   const [user, setUser] = useState();
+  const [loggedInUser, setLoggedInUser] = useState()
   const authdata = useContext(AuthContext);
 
-  useEffect(() => {
-    if(authdata){
-      const loggedInUser = localStorage.getItem("loggedInUser");
-      if(loggedInUser){
-        setUser(loggedInUser.role);
-      }
-    }
-  }, [authdata]);
-  
+  // useEffect(() => {
+  //     const loggedInUser = localStorage.getItem("loggedInUser");
+  //     if(loggedInUser){
+  //       const userData = JSON.parse(loggedInUser);
+  //       setUser(userData.role);
+  //       setLoggedInUser(userData.data);
+  //     }
+  // });
 
   const handleLogin = (email,password) => {
-    if(email == "admin@.a" && password == "123"){
-      setUser("admin");
+    if(authdata.admin.find((e) => email == e.email && password == e.password)){
+      // const admin =  ;
+      setUser('admin');
       localStorage.setItem('loggedInUser',JSON.stringify({role: 'admin'}));
-    }else if(authdata && authdata.employee.find((e) => email == e.email && password == e.password)){
-      setUser("user");
-      localStorage.setItem('loggedInUser',JSON.stringify({role:'employee'}));
+      setLoggedInUser(authdata.admin);
+    }else if(authdata){
+      const employee =  authdata.employee.find((e) => email == e.email && password == e.password);
+      if(employee){
+        setUser('employee');
+        setLoggedInUser(employee);
+        localStorage.setItem('loggedInUser',JSON.stringify({role:'employee' , data : employee}));
+      }
     }
     else{
       alert("Invalid credentials");
@@ -40,7 +46,7 @@ function App() {
         !user ? (
           < Login handleLogin={handleLogin} />
         ): (
-          user == 'admin' ? <AdminDashBoard /> : < EmployeeDashboard />
+          user == 'admin' ? <AdminDashBoard data={loggedInUser} /> : < EmployeeDashboard data={loggedInUser} />
         )
       }
 

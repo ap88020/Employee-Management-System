@@ -4,12 +4,13 @@ import TaskListNumber from '../others/TaskListNumber'
 import TaskList from '../TaskList/TaskList'
 
 
-const EmployeeDashboard = () => {
+const EmployeeDashboard = ({data}) => {
+  // console.log(data);
   return (
     <div className='px-5'>
-        <Headers/>
-        < TaskListNumber />
-        < TaskList />
+        <Headers data={data} />
+        < TaskListNumber data={data} />
+        < TaskList data={data} />
     </div>
   )
 }
