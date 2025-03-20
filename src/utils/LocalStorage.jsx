@@ -37,10 +37,10 @@ const employee = [
       }
     ],
     "taskCount": {
-      "active": 1,
-      "newTask": 1,
+      "active": 2,
+      "newTask": 2,
       "completed": 1,
-      "faild": 1
+      "faild": 0
     }
   },
   {
@@ -83,7 +83,7 @@ const employee = [
     "taskCount": {
       "active": 1,
       "newTask": 1,
-      "completed": 1,
+      "completed": 2,
       "faild": 1
     }
   },
@@ -125,9 +125,9 @@ const employee = [
       }
     ],
     "taskCount": {
-      "active": 1,
-      "newTask": 1,
-      "completed": 1,
+      "active": 3,
+      "newTask": 2,
+      "completed": 0,
       "faild": 1
     }
   },
@@ -170,9 +170,9 @@ const employee = [
     ],
     "taskCount": {
       "active": 1,
-      "newTask": 1,
+      "newTask": 2,
       "completed": 1,
-      "faild": 1
+      "faild": 2
     }
   },
   {
@@ -213,13 +213,14 @@ const employee = [
       }
     ],
     "taskCount": {
-      "active": 1,
+      "active": 2,
       "newTask": 1,
-      "completed": 1,
+      "completed": 2,
       "faild": 1
     }
   }
 ];
+
 
 
 const admin = [
