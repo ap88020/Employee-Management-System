@@ -3,10 +3,10 @@ import Headers from '../others/Headers'
 import CreateTask from '../others/CreateTask'
 import AllTask from '../others/AllTask'
 
-const AdminDashBoard = ({data}) => {
+const AdminDashBoard = (props) => {
   return (
     <div>
-        <Headers data={data} />
+        <Headers changeUser={props.changeUser} data={props.data} />
         < CreateTask />
         < AllTask />
     </div>

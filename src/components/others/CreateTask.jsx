@@ -6,9 +6,22 @@ const CreateTask = () => {
     const [taskAsignTo, setAsignTo] = useState('')
     const [taskCatogery, setCatogery] = useState('');
     const [taskDescription, setTaskDescription] = useState('');
+
+    const [task, setTask] = useState([]);
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log({taskTitle,TaskDate,taskAsignTo,taskCatogery,taskDescription});
+        setTask({taskTitle,TaskDate,taskAsignTo,taskCatogery,taskDescription , active : false ,newTask:true, faild:true,completed:true});
+
+
+        const data = JSON.parse(localStorage.getItem('employee'));
+        data.forEach((elem)=>{
+            if(elem.firstName ==  taskAsignTo){
+                elem.tasks.push(task);
+                // console.log(elem.tasks);
+            }
+        })
+        localStorage.setItem("employee",JSON.stringify(data));
+
         setTaskDate('');
         setTaskDate('');
         setAsignTo('');
@@ -18,7 +31,9 @@ const CreateTask = () => {
   return (
     <div>
             <form 
-            onSubmit={submitHandler}
+            onSubmit={(e)=>{
+                submitHandler(e);
+            }}
             className='flex justify-between items-center p-2 mt[-6rem]'
             >
                 <div className='w-[50%]'>

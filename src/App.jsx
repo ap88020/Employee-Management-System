@@ -46,7 +46,7 @@ function App() {
         !user ? (
           < Login handleLogin={handleLogin} />
         ): (
-          user == 'admin' ? <AdminDashBoard data={loggedInUser} /> : < EmployeeDashboard data={loggedInUser} />
+          user == 'admin' ? <AdminDashBoard changeUser={setUser} data={loggedInUser} /> : < EmployeeDashboard changeUser={setUser} data={loggedInUser} />
         )
       }
 
